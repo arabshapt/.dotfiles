@@ -2560,6 +2560,10 @@
              :right_red_hyper_105_a_z           {:key :z :modi :hyper_105}
                 ;; o sequence
              :right_red_hyper_106_o_1   {:key :1 :modi :hyper_106}
+             :right_red_hyper_106_o_2   {:key :2 :modi :hyper_106}
+             :right_red_hyper_106_o_3   {:key :3 :modi :hyper_106}
+             :right_red_hyper_106_o_4   {:key :4 :modi :hyper_106}
+             :right_red_hyper_106_o_5   {:key :5 :modi :hyper_106}
              :right_red_hyper_106_o_semicolon           {:key :semicolon :modi :hyper_106}
              :right_red_hyper_106_o_comma           {:key :comma :modi :hyper_106}
              :right_red_hyper_106_o_period           {:key :period :modi :hyper_106}
@@ -3708,6 +3712,7 @@
 
         ;;[{:key :1 :modi :option} [[:yabai "window --space 1" :yabai "space --focus 1"]]];; perfect example
 
+         [{:key :spacebar :modi :hyper_27} :!Tspacebar]
         [{ :key :keypad_1 :modi :hyper_01} :!Tspacebar]
         [{:key :escape :modi [:right_command]} :!Tspacebar]
 
@@ -3726,11 +3731,16 @@
         [{:key :m :modi :hyper_37_right_brown_hold} [:alfred "menu-bar-search" "com.folded-paper.menu-bar-search"]]
         [{:key :d :modi :hyper_37_right_brown_hold} [:alfred "dash-search" "com.kapeli.dash.workflow"]]
         [{:key :c :modi :hyper_37_right_brown_hold} [:alfred "chrome-tab-search" "com.epilande.browser-tabs"]]
-        [{:key :n :modi :hyper_71} [:open "raycast://extensions/raycast/dictionary/define-word"]]
-        [{:key :m :modi :hyper_71} [:alfred "menu-bar-search" "com.folded-paper.menu-bar-search"]]
+        [{:key :s :modi :hyper_37_right_brown_hold} [:open "raycast://extensions/mblode/google-search/index"]]
+      ;;   [{:key :n :modi :hyper_71} [:open "raycast://extensions/raycast/dictionary/define-word"]]
+      ;;   [{:key :m :modi :hyper_71} [:alfred "menu-bar-search" "com.folded-paper.menu-bar-search"]]
         [{:key :8 :modi :hyper_02} [:alfred "menu-bar-search" "com.folded-paper.menu-bar-search"]]
-        [{:key :d :modi :hyper_71} [:alfred "dash-search" "com.kapeli.dash.workflow"]]
-        [{:key :c :modi :hyper_71} [:alfred "chrome-tab-search" "com.epilande.browser-tabs"]]
+        [{:key :7 :modi :hyper_02} [:alfred "chrome-tab-search" "com.epilande.browser-tabs"]]
+        [{:key :2 :modi :hyper_02} :!CS2]
+        [{:key :3 :modi :hyper_02} :!CS3]
+        [{:key :4 :modi :hyper_02} :!CS4]
+      ;;   [{:key :d :modi :hyper_71} [:alfred "dash-search" "com.kapeli.dash.workflow"]]
+      ;;   [{:key :c :modi :hyper_71} [:alfred "chrome-tab-search" "com.epilande.browser-tabs"]]
       ;;   [{:key :c :modi :hyper_66_left_brown_hold} [:alfred "chrome-tab-search" "com.epilande.browser-tabs"]]
         ;; [{:key :n :modi :hyper_37_right_brown_hold} [:open "raycast://extensions/raycast/dictionary/define-word"]]
 ;; [:semicolon [:alfred "search learning" "nikivi.private.directories"]]
@@ -3765,6 +3775,8 @@
         [{:key :e :modi :hyper_27} [:!Os]]
          ;; [:right_red_hyper_106_o_f [:km "F Path Finder"]]
 
+;; testing
+                [:left_shift_hyper_76_o_a {:key :f11 :modi :hyper_01}]
 
          ;;----------------------------------------------------------------------------------------------
                [:right_red_hyper_122_w_f [:yabai "window --toggle zoom-fullscreen"]]
@@ -3774,6 +3786,8 @@
                [:right_red_hyper_122_w_down_arrow  [:yabai "window --focus south"]] ;NextProjectWindow
                [:right_red_hyper_122_w_k [:yabai "display --focus north"]]
                [:right_red_hyper_122_w_j [:yabai "display --focus south"]]
+               [:right_red_hyper_122_w_h [:yabai "display --focus west"]]
+               [:right_red_hyper_122_w_l [:yabai "display --focus east"]]
                [:right_red_hyper_122_w_p [:yabai "window --toggle pip"]]
                [:right_red_hyper_122_w_m [:yabai "space --toggle mission-control"]]
                [:right_red_hyper_122_w_t [[:yabai "window --toggle float --grid 4:4:1:1:2:2"]]]
@@ -3798,7 +3812,14 @@
                 [:right_red_hyper_106_o_d {:key :equal_sign :modi :hyper_01}]
                 ;[{:key :l :modi :hyper_44} [:km "open: Outlook"]]
                 ;[{:key :t :modi :hyper_44} [:km "MSTeams"]]
-                [:right_red_hyper_106_o_1 [:open-a "/Users/arabshaptukaev/Applications/Edge Apps.localized/Gmail.app/Contents/MacOS/app_mode_loader"]]
+
+                [:right_red_hyper_106_o_1 [:open-a "/Users/arabshaptukaev/Applications/Edge Apps.localized/Ausy:Randstad Gmail.app/Contents/MacOS/app_mode_loader"]]
+                [:right_red_hyper_106_o_2 [:open-a "/Users/arabshaptukaev/Applications/Edge Apps.localized/Ausy:Randstad Google Calendar.app/Contents/MacOS/app_mode_loader"]]
+                [:right_red_hyper_106_o_3 [:open-a "/Users/arabshaptukaev/Applications/Edge Apps.localized/Ausy:Randstad Microsoft Teams Classic.app/Contents/MacOS/app_mode_loader"]]
+                [:right_red_hyper_106_o_4 [:open-a "/Users/arabshaptukaev/Applications/Edge Apps.localized/Ausy:Randstad AGIS-Portal.app/Contents/MacOS/app_mode_loader"]]
+                [:right_red_hyper_106_o_5 [:open-a "/Users/arabshaptukaev/Applications/Chrome Apps.localized/BMW BSSP | Microsoft Teams Classic.app/Contents/MacOS/app_mode_loader"]]
+                [:right_red_hyper_106_o_t [:open-a "/Users/arabshaptukaev/Applications/Chrome Apps.localized/BMW BSSP | Microsoft Teams Classic.app/Contents/MacOS/app_mode_loader"]]
+                [:right_red_hyper_106_o_n [:open-a "/Users/arabshaptukaev/Applications/Chrome Apps.localized/GPT WEB.app/Contents/MacOS/app_mode_loader"]]
                 ;; [{:key :w :modi :hyper_44} [:km "Warp"]]
                 [{:key :spacebar :modi :hyper_29} {:key :spacebar :modi :hyper_01_fn}] ;Contexts app switcher
                  [{:key :home :modi :hyper_02} {:key :f13 :modi :hyper_01}] ;Warp overlay
@@ -4016,6 +4037,8 @@
         [:condi :warp :kinesis]
         [{:key :spacebar :modi [:control :right_control :shift :option]} :!Tspacebar]
         [{:key :escape :modi [:control :right_control]} :!Tspacebar]
+        [{:key :j :modi :right_command} [:!Ta :!St]]
+
         ;
         ]}
 
@@ -4282,13 +4305,15 @@
                [:right_red_hyper_98_p_t [:km "pt Switch to previous tab"]]
                 [{:key :p :modi :hyper_34} [:km "pt Switch to previous tab"]]
 
+               [:right_red_hyper_112_t_p [:km "pt Switch to previous tab"]]
                 [:right_red_hyper_112_t_d [:km "tdp Duplicate Tab"]]
                 [{:key :q :modi :hyper_34} :!CTO1]
-                [{:key :t :modi :hyper_34} :!COright_arrow]
-                [{:key :h :modi :hyper_34} :!COleft_arrow]
+                [{:key :t :modi :hyper_34} :!COright_arrow] ;; go to next tab
+                [{:key :h :modi :hyper_34} :!COleft_arrow] ;; go to prev tab
                 [{:key :up_arrow :modi :hyper_34} :!CTOup_arrow]
                 [{:key :down_arrow :modi :hyper_34} :!CTOdown_arrow]
                 [{:key :escape :modi :hyper_34} :!Sescape]
+                [{:key :9 :modi :hyper_02} :!CT9] ;;
                 ;;right_red_hyper_100_f_f
                  ;;  [{:key :right_arrow :modi :hyper} :!TShyphen]
                 ;;  [:p :!Tp]
@@ -4326,6 +4351,7 @@
                  ;; double tap ctrl to run anything
                 [{:key :u :modi :hyper_53} [{:key :left_control} {:key :left_control}]]
                 [:right_red_hyper_98_p_f :!CSo]
+                [:right_red_hyper_98_p_p :!COT4]
                 [:right_red_hyper_120_b_s :!CSn]
 
                 [:right_red_hyper_116_q_g :!CTO2]
