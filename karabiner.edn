@@ -3721,6 +3721,7 @@
       ;;   [:!Sspacebar :!Odelete_or_backspace]
 
         ;;[{:key :1 :modi :option} [[:yabai "window --space 1" :yabai "space --focus 1"]]];; perfect example
+        [{:key :delete_or_backspace :modi :hyper_44} :!Odelete_or_backspace] ;; delete word left
 
          [{:key :spacebar :modi :hyper_27} :!Tspacebar]
         [{ :key :keypad_1 :modi :hyper_01} :!Tspacebar]
