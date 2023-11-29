@@ -103,6 +103,7 @@
              :right_cmd_hyper [:right_command :shift :control :option]
         ;; use these only for kinesis
              :hyper_01_fn [:left_command :left_option :left_control :left_shift :fn]       ;; hyper  L_S,L_C,L_A,L_G
+            ;;  :hyper_01_caps [:left_command :left_option :left_control :left_shift :caps_lock]       ;; hyper  L_S,L_C,L_A,L_G
              :hyper_01 [:left_command :left_option :left_control :left_shift ]       ;; hyper  L_S,L_C,L_A,L_G
              :hyper_02 [:right_command :right_option :right_control :right_shift]    ;; hyper  R_S,R_C,R_A,R_G
              :hyper_03 [:left_shift :right_option :right_control :right_shift]       ;; hyper  R_S,R_C,R_A,L_S
@@ -3363,6 +3364,7 @@
  :applications {;
                 :ableton ["com.ableton.live"]
                 :chrome ["com.google.Chrome"]
+                :arc ["company.thebrowser.Browser"]
                 :safari ["com.apple.Safari"]
                 :code ["com.microsoft.VSCode"]
                 :intellij ["com.jetbrains.intellij"]
@@ -3386,6 +3388,9 @@
          ;; :caps_lock-mode-kinesis {:key :caps_lock :condi [:kinesis :hyper_01-mode]}
           :caps_lock-mode {:key :caps_lock :alone
                            {:key :escape}  :condi :apple_built_in}
+            ;; :caps_lock-mode-kin {:key :caps_lock :alone
+            ;;                   {:key :escape}  :condi :kinesis}
+            ;; :caps_lock-mode-kin {:key :caps_lock :modi {:optional [:any] } :condi :kinesis}
         ;;   :backslash-mode {:key :backslash :alone {:key :backslash}}
           :backslash-mode {:key :backslash :alone {:key :backslash}}
           :escape-mode {:key :escape nil [;in case a mode gets stuck 😬
@@ -3497,6 +3502,7 @@
         {:des "global all keyboards"
         :rules [
         [:##caps_lock :fn :kinesis]
+        [:##application :caps_lock :kinesis]
         [{:key :1 :modi :hyper_58} [[:yabai "windowwindowwindow --space 1" :yabai "space --focus 1"] {:key :1 :modi :option}]];; perfect example
         [{:key :2 :modi :hyper_58} [[:yabai "window --space 2" :yabai "space --focus 2"] {:key :2 :modi :option}]];; perfect example
         [{:key :3 :modi :hyper_58} [[:yabai "window --space 3" :yabai "space --focus 3"] {:key :3 :modi :option}]];; perfect example
@@ -3552,6 +3558,8 @@
         [{:key :e :modi :hyper_58 } :play_or_pause];; perfect example
         [{:key :u :modi :hyper_58 } :volume_increment];; perfect example
 
+      ;;   [:condi :caps_lock-mode-kin]
+      ;;   [{:key :s :modi :hyper_01 } :volume_increment];; perfect example
 
 ;; # increase window size
 ;; # shift + alt - a : yabai -m window --resize left:-20:0
@@ -3643,8 +3651,10 @@
                  ]}
         {:des "kinesis kinesis-layer-right-cmd-hyper-kp-ast layer"
         :rules [:kinesis
-                [:condi :kinesis-layer-right-cmd-hyper-kp-ast :kinesis]
-                [:##k [:km "open: VS Code"]]
+               ;;  [:condi :kinesis-layer-right-cmd-hyper-kp-ast :kinesis]
+                      [{:key :keypad_asterisk :modi :right_cmd_hyper} nil nil {:held :!Cc :alone :!Cv}]
+
+               ;;  [:##k [:km "open: VS Code"]]
 
         ;
         ]}
@@ -3748,6 +3758,10 @@
         [:hyper_127_n0 :!Cspacebar] ;raycast
       ;;   [:hyper_128_n0 {:key :f11 :modi :hyper}] ;alfred
         [{:key :keypad_7 :modi :hyper_02} {:key :f11 :modi :hyper_01}] ;alfred
+        [{:key :keypad_plus :modi :hyper_02} :f13] ;seek
+        [:left_red_hyper_131_f_f :f13] ;seek
+        [{:key :g :modi :hyper_18} :f13] ;seek
+        [{:key :c :modi :hyper_18} :f16] ;seek
         [:left_red_hyper_137_o_c  [:km "Chrome - og"]] ; /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
         [:left_red_hyper_137_o_i [:km "IntelliJ IDEA - og"]] ; /Users/arabshaptukaev/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/232.9559.62/IntelliJ IDEA.app/Contents/MacOS/idea
         [:left_red_hyper_137_o_b [:km "Obsidian"]] ; /Applications/Obsidian.app/Contents/MacOS/Obsidian
@@ -3801,6 +3815,7 @@
                [:right_red_hyper_122_w_w :!Ctab];; perfect example
 
                [:right_red_hyper_106_o_c [:open-a "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"]]
+               [:right_red_hyper_106_o_a [:open-a "/Applications/Arc.app/Contents/MacOS/Arc"]]
                [:right_red_hyper_114_s_s [:alfred "start" "mo.com.sleeplessmind.WooshyWindowToTheForeground"]]
                 [:right_red_hyper_106_o_h [:open-a "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev"]]
                 [:right_red_hyper_106_o_e [:open-a "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"]]
@@ -3823,8 +3838,10 @@
                 ;; [{:key :w :modi :hyper_44} [:km "Warp"]]
                 [{:key :spacebar :modi :hyper_29} {:key :spacebar :modi :hyper_01_fn}] ;Contexts app switcher
                  [{:key :home :modi :hyper_02} {:key :f13 :modi :hyper_01}] ;Warp overlay
+                 [{:key :end :modi :hyper_02} [:open-a "/Applications/Warp.app/Contents/MacOS/stable"]] ;Warp overlay
+                 [:right_red_hyper_106_o_w [:open-a "/Applications/Warp.app/Contents/MacOS/stable"]] ;Warp overlay
                 ;; [{:key :w :modi :hyper_44} {:key :f13 :modi :hyper}] ;Warp overlay
-                [:right_red_hyper_106_o_f [:open-a "/Applications/Path Finder.app/Contents/MacOS/Path Finder"]]
+                  [:right_red_hyper_106_o_f [:open-a "/Applications/Path Finder.app/Contents/MacOS/Path Finder"]]
                 [:right_red_hyper_106_o_s [:open-a "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari"]]
                 [:right_red_hyper_106_o_g [:open-a "/Applications/MacGPT.app/Contents/MacOS/MacGPT"]]
 
@@ -3999,11 +4016,15 @@
         ]}
 
 {:des "warp apple_built_in" :rules [
+           [:condi :warp :apple_built_in]
+           [{:key :j :modi :command} [:!Ta :!St]]
+        [{:key :g :modi :command} [:!Ta :g]]
         [:condi :warp :caps_lock-mode :apple_built_in]
         [:m :!CSopen_bracket]
         [:comma :!CSclose_bracket]
         [:t :!Tt]
         [:a :!Ta]
+
         ;
         ]}
 
@@ -4038,6 +4059,7 @@
         [{:key :spacebar :modi [:control :right_control :shift :option]} :!Tspacebar]
         [{:key :escape :modi [:control :right_control]} :!Tspacebar]
         [{:key :j :modi :right_command} [:!Ta :!St]]
+        [{:key :g :modi :left_command} [:!Ta :g]]
 
         ;
         ]}
@@ -4107,6 +4129,26 @@
 
 {:des "o-mode applications" :rules [:o-mode
                 [:condi :apple_built_in :o-mode]
+                [:##n [:open-a "/Users/arabshaptukaev/Applications/Chrome Apps.localized/GPT WEB.app/Contents/MacOS/app_mode_loader"]]
+               [:##c  [:open-a "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"]]
+               ;;  [{:key :h :modi :hyper_44} [:open-a "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev"]]
+               ;;  [{:key :e :modi :hyper_44} [:open-a "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"]]
+               ;; ;;  [{:key :i :modi :hyper_44} [:km "IntelliJ IDEA - og"]]
+                [:##i [:open-a "/Applications/IntelliJ IDEA Ultimate.app/Contents/MacOS/idea"]]
+               ;; ;;  [{:key :i :modi :hyper_44} [:km "IntelliJ IDEA - og"]]
+               ;;  [{:key :o :modi :hyper_44} [:open-a "/Applications/Obsidian.app/Contents/MacOS/Obsidian"]]
+               ;;  [{:key :v :modi :hyper_44} [:open-a "/Applications/Visual Studio Code.app/Contents/MacOS/Electron"]]
+               ;;  [{:key :d :modi :hyper_44} {:key :equal_sign :modi :hyper_01}]
+               ;;  ;[{:key :l :modi :hyper_44} [:km "open: Outlook"]]
+               ;;  ;[{:key :t :modi :hyper_44} [:km "MSTeams"]]
+               ;;  [{:key :1 :modi :hyper_44} [:open-a "/Users/arabshaptukaev/Applications/Edge Apps.localized/Gmail.app/Contents/MacOS/app_mode_loader"]]
+               ;;  ;; [{:key :w :modi :hyper_44} [:km "Warp"]]
+               ;;  [{:key :spacebar :modi :hyper_29} {:key :spacebar :modi :hyper_01_fn}] ;Contexts app switcher
+               ;;  [{:key :home :modi :hyper_89} {:key :f13 :modi :hyper_01}] ;Warp overlay
+               ;;  ;; [{:key :w :modi :hyper_44} {:key :f13 :modi :hyper}] ;Warp overlay
+               ;;  [{:key :f :modi :hyper_44} [:open-a "/Applications/Path Finder.app/Contents/MacOS/Path Finder"]]
+               ;;  [{:key :g :modi :hyper_44} [:open-a "/Applications/MacGPT.app/Contents/MacOS/MacGPT"]]
+
                  ;symbols [](){}<>
                ;;  [:a {:key :keypad_asterisk :modi :super-hyper}]
                 [:f [:km "Chrome - og"]]
@@ -4210,7 +4252,7 @@
 
                  [:m :!S5]
                  [:comma :!Squote]
-                 [:period :quote]
+                 [:period :!Shyphen]
                  [:slash :semicolon]
 
                  ;
@@ -4220,7 +4262,7 @@
 {:des "tilde-mode symbols"
          :rules [:tilde-mode
                  [:condi :apple_built_in :tilde-mode]
-
+        [:spacebar {:key :spacebar :modi :hyper_01_fn}] ;Contexts app switcher
                  [:q :!S2]
                  [:w :!Shyphen]
                  [:e :open_bracket]
@@ -4257,7 +4299,7 @@
 
                  [:m :!S5]
                  [:comma :!Squote]
-                 [:period :quote]
+                 [:period :!Shyphen]
                  [:slash :semicolon]
                  ;
                  ]}
@@ -4325,6 +4367,24 @@
         ;;  [:o :!CSa]
                  ;
                  ]}
+
+
+      {:des "Arc kinesis"
+         :rules [:arc
+                 [:condi :kinesis :arc]
+                
+               ;; [:right_red_hyper_112_t_p [:!Ct :down_arrow :return_or_enter]]
+               [:right_red_hyper_112_t_p [:!Ttab]]
+               [:right_red_hyper_112_t_p [:!Ttab]]
+                [{:key :p :modi :hyper_34} :!Ttab]
+
+                [{:key :e :modi :hyper_34} :!TS1]
+                [{:key :u :modi :hyper_34} :!TS2]
+                [{:key :o :modi :hyper_34} :!TSequal_sign]
+                [{:key :a :modi :hyper_34} :!Ct]
+                 ;
+                 ]}
+
         {:des "trackpad1"
          :rules [:multitouch_extension_finger_count_total
                  [:f :button1]
@@ -4353,10 +4413,23 @@
                 [:right_red_hyper_98_p_f :!CSo]
                 [:right_red_hyper_98_p_p :!COT4]
                 [:right_red_hyper_120_b_s :!CSn]
+                [:right_red_hyper_114_s_period [:!Of1 {:key :1}]]
 
                 [:right_red_hyper_116_q_g :!CTO2]
                 [{:key :a :modi :hyper_34} :!CSa]
+                [{:key :o :modi :hyper_34} :!CSo]
                 [{:key :q :modi :hyper_34} :!CTO1]
+                
+                [{:key :a :modi :hyper_32} :!CTO5]
+                [{:key :o :modi :hyper_32} :!CTO6]
+                [{:key :e :modi :hyper_32} :!CTO7]
+                [{:key :u :modi :hyper_32} :!CTO8]
+
+                [{:key :up_arrow :modi :hyper_29} :!CTO9]
+                [{:key :down_arrow :modi :hyper_29} :!CTO0]
+               ;;  [{:key :o :modi :hyper_29} :!CTO8]
+               ;;  [{:key :o :modi :hyper_29} :!CTO9]
+
                 [{:key :up_arrow :modi :hyper_34} :!CTOup_arrow]
                 [{:key :down_arrow :modi :hyper_34} :!CTOdown_arrow]
                 [{:key :escape :modi :hyper_34} :!Sescape]
