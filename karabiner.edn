@@ -1,6 +1,11 @@
+;; log
+;; hyper_44 is retiring and gets replaced with symbol layer of engrammer
+
+
 ;; rule [:period ["media-mode" 1] nil {:afterup ["media-mode" 0] :alone :period}]
 ;;       |_____| |_______________| |_| |_________________________________________|
 ;;        <from>    <to>      <conditions>         <other options>
+
 
     ;; !  | means mandatory
     ;; #  | means optional
@@ -3393,6 +3398,7 @@
             ;; :caps_lock-mode-kin {:key :caps_lock :modi {:optional [:any] } :condi :kinesis}
         ;;   :backslash-mode {:key :backslash :alone {:key :backslash}}
           :backslash-mode {:key :backslash :alone {:key :backslash}}
+          :mouse-mode {:key :button4 :alone {:key :button4}}
           :escape-mode {:key :escape nil [;in case a mode gets stuck 😬
                                           {:set ["fn-mode" 0]}
                                           {:set ["opt-mode" 0]}
@@ -3649,6 +3655,18 @@
                 ;;  [:!STa :!CSa]
 
                  ]}
+
+                 {:des "kinesis kinesis-layer-right-cmd-hyper-kp-ast layer mouse"
+        :rules [
+        [:condi :mouse-mode]
+               ;;  [:condi :kinesis-layer-right-cmd-hyper-kp-ast :kinesis]
+                      [{:key :a} :return_or_enter];;
+
+               ;;  [:##k [:km "open: VS Code"]]
+
+        ;
+        ]}
+
         {:des "kinesis kinesis-layer-right-cmd-hyper-kp-ast layer"
         :rules [:kinesis
                ;;  [:condi :kinesis-layer-right-cmd-hyper-kp-ast :kinesis]
@@ -3821,7 +3839,8 @@
                 [:right_red_hyper_106_o_h [:open-a "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev"]]
                 [:right_red_hyper_106_o_e [:open-a "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"]]
                ;;  [{:key :i :modi :hyper_44} [:km "IntelliJ IDEA - og"]]
-                [:right_red_hyper_106_o_i [:open-a "/Applications/IntelliJ IDEA Ultimate.app/Contents/MacOS/idea"]]
+               ;;  [:right_red_hyper_106_o_i [:open-a "/Applications/IntelliJ IDEA Ultimate.app"]]
+               [:right_red_hyper_106_o_i [:km "IntelliJ IDEA - og"]] ; /Users/arabshaptukaev/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/232.9559.62/IntelliJ IDEA.app/Contents/MacOS/idea
                ;;  [{:key :i :modi :hyper_44} [:km "IntelliJ IDEA - og"]]
                 [:right_red_hyper_106_o_o [:open-a "/Applications/Obsidian.app/Contents/MacOS/Obsidian"]]
                 [:right_red_hyper_106_o_v [:open-a "/Applications/Visual Studio Code.app/Contents/MacOS/Electron"]]
@@ -4335,7 +4354,8 @@
                 [ {:key :m :modi :hyper_01} :!CSopen_bracket]
                  [ {:key :comma :modi :hyper_01} :!CSclose_bracket]
                  ;; double tap ctrl to run anything
-                [{:key :u :modi :hyper_53} [{:key :left_control} {:key :left_control}]]
+                [{:key :u :modi :hyper_34} :!Cclose_bracket]
+                [{:key :e :modi :hyper_34} :!Copen_bracket]
                 [:right_red_hyper_100_f_f :!CSo]
                 [:right_red_hyper_98_p_f :!CSo]
                 [:right_red_hyper_120_b_s :!CSn]
@@ -4419,6 +4439,7 @@
                 [:right_red_hyper_116_q_g :!CTO2]
                 [{:key :a :modi :hyper_34} :!CSa]
                 [{:key :o :modi :hyper_34} :!CSo]
+                [{:key :e :modi :hyper_34} [:km "Intellij-double-shift"]]
                 [{:key :q :modi :hyper_34} :!CTO1]
                 
                 [{:key :a :modi :hyper_32} :!CTO5]
@@ -5439,6 +5460,8 @@
          :rules [:code
                  [:condi :kinesis :code]
         [{:key :1 :modi :hyper_01_fn} :!Tspacebar]
+        [{:key :up_arrow :modi :left_option} :!CTSright_arrow]
+        [{:key :down_arrow :modi :left_option} :!CTSleft_arrow]
                         ;; [:left_shift_hyper_77_e_x :f7]
         ;;  [:o :!CSa]
                  ;
